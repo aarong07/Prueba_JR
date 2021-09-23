@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Prueba_JR.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="height:60px;"></div>
+<h2 style="text-align:center;">Tipos de Categorias</h2>
+<div style="float:right;">
+    <button class="btn btn-primary" onclick="location.href = '@Url.Action("Create","Categorias")'">
+        <i class="bi bi-plus-square"></i>  Nueva Categoria
+    </button>
+</div>
+<div style="height:50px;"></div>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Nombre 
+        </th>
+        <th>
+            Descripcion 
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatDescripcion)
+            </td>
+            <td>
+                <a href="~/Categorias/Edit/@item.Id_cat" class="btn btn-default"><i class="bi bi-pencil-square"></i> Editar</a>
+                <a href="~/Categorias/Delete/@item.Id_cat" class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>

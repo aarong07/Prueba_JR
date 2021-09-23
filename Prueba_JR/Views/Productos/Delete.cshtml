@@ -1,0 +1,49 @@
+﻿@model Prueba_JR.Models.Productos
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>¿Estas seguro que deseas eliminar el siguiente producto?:</h3>
+<div>
+    <h5>Si la respuesta es afirmativa, dar clic en Si</h5>
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre Producto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdNombre)
+        </dd>
+
+        <dt>
+            Descripcion Producto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdDescripcion)
+        </dd>
+
+        <dt>
+            Categoria:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CatNombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Si, eliminalo" class="btn btn-danger" />
+            <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Index","Productos")'">Cancelar</button>
+        </div>
+    }
+</div>

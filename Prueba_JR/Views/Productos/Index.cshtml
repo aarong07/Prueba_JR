@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Prueba_JR.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="height:60px;"></div>
+<h2 style="text-align:center;">Catalogo de Productos</h2>
+<div style="float:right;">
+    <button class="btn btn-primary" onclick="location.href = '@Url.Action("Create","Productos")'">
+        <i class="bi bi-plus-square"></i>  Nuevo Producto
+    </button>
+</div>
+<div style="height:50px;"></div>
+<table class="table table-bordered">
+    <thead class="">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdDescripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.CatNombre)
+            </td>
+            <td>
+                <a href="~/Productos/Edit/@item.Id_prod" class="btn btn-default"><i class="bi bi-pencil-square"></i> Editar</a>
+                <a href="~/Productos/Delete/@item.Id_prod" class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>

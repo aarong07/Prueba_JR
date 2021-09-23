@@ -1,0 +1,43 @@
+﻿@model Prueba_JR.Models.Productos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.CatNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CatNombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_prod }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
